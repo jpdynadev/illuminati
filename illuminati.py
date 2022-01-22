@@ -1,10 +1,22 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+user = {
+    "username": "user1",
+    "password": "password2"
+}
+
+user1 = {
+    "username": "charles",
+    "password": "definitelyNotPassword"
+}
+
+users = [user, user1]
+
+@app.route('/login')
 def initializeLogin():
-    return 'Initalizing login'
+    return jsonify(users)
 
 if __name__ == '__main__':
     app.run()
